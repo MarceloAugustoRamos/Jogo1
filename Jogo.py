@@ -124,7 +124,6 @@ while vida:
                 print('Essa sala tem apenas uma porta')
                 print('1: Em frente')
                 int(input('> '))
-                int(input('> '))
                 tranca = False #desativa a tranca na porta vermelha(entrando em outro lugar)
                 sala7 = True
 
@@ -149,6 +148,10 @@ tranca7 = True #tranca da porta a direita na sala 7
 prim8 = True #verifica se é a primeira vez que o jogador entrou na sala 8(para pegar a espada grande)
 tranca8 = True #tranca da porta demoníaca na sala 8
 dem11 = True #verifica se o demônio na sala 11 não foi derrotado
+prim9 = True #verifica se é a primeira vez que o jogador entrou na sala 9(para pegar a poção)
+porta10 = 0
+cac13 = True
+
 while vida:
     #Sala 7
     #estrutura de repetição que repete a sala 7 caso o jogador não tenha uma chave e tente abrir a tranca
@@ -253,11 +256,101 @@ while vida:
 
     if porta7 == 2:
         #sala 9
-        print('Em construção')
-    else:
-        #sala 10
-        print('Em construção')
+        if prim9:
+            print('Você encontra uma mesa com uma poção de retorno em cima')
+            print('Você pega a poção')
+            pocao += 1
+            prim9 = False
+        print('Nessa sala você vê duas portas')
+        print('1: Direita')
+        print('2: Esquerda')
+        porta9 = int(input('> '))
 
-    break #para testes
+        if porta9 == 1:
+            #Armadilha
+            print('Você cai em uma armadilha')
+            if pocao > 0:
+                print('Você bebe uma poção de retorno e sobrevive, retornando à sala da fogueira.')
+                pocao -= 1
+            else:
+                print('Você morreu.')
+                vida = False
+        
+        else:
+            #Sala 12(sem o texto para a decisão da porta por enquanto)
+            print('')
+            porta12 = int(input('> '))
+            if porta12 == 1:
+            #Sala 13(sem o texto para a decisão da porta por enquanto)
+                if cac13:
+                    print('Você encontra um caçador nessa sala')
+                    print('Será necessário 3 de durabilidade da espada para derrotar')
+                    print(f'Sua espada tem {espada} de durabilidade')
+                    print('1: Lutar')
+                    input('> ')
+                    if espada > 2:
+                        print('Você derrota o esqueleto com sucesso')
+                        espada -= 3
+                        cac13= False
+                    else:
+                        print('Sua espada quebra na luta e você fica indefeso')
+                        espada -= espada
+                        if pocao > 0:
+                            print('Você bebe uma poção de retorno e sobrevive, retornando à primeira sala')
+                            pocao -= 1
+                        else:
+                            print('Você morreu')
+                            vida = False
+
+                print('')
+                porta13 = int(input('> '))
+                if porta13 == 1:
+                    #Armadilha 1
+                    print('Você cai em uma armadilha')
+                    if pocao > 0:
+                        print('Você bebe uma poção de retorno e sobrevive, retornando à sala da fogueira.')
+                        pocao -= 1
+                    else:
+                        print('Você morreu.')
+                        vida = False
+                else:
+                    #Armadilha 2
+                    print('Você cai em uma armadilha')
+                    if pocao > 0:
+                        print('Você bebe uma poção de retorno e sobrevive, retornando à sala da fogueira.')
+                        pocao -= 1
+                    else:
+                        print('Você morreu.')
+                        vida = False
+        
+            else:
+                #Levar para sala 14
+                porta10 = 2
+            
+
+
+    else:
+        #sala 10(sem o texto para a decisão da porta por enquanto)
+        if porta10 == 0:
+            print('')
+            porta10 = input('> ')
+
+
+        if porta10 == 1:
+            #Armadilha
+            print('Você cai em uma armadilha')
+            if pocao > 0:
+                print('Você bebe uma poção de retorno e sobrevive, retornando à sala da fogueira.')
+                pocao -= 1
+            else:
+                print('Você morreu.')
+                vida = False
+        else:
+            #Sala 14(Saída, sem o texto completo por enquanto)
+            print('-Saída-')
+            print('1: (terminar o jogo)')
+            int(input('> '))
+            print('Parabéns, você escapou da masmorra.')
+            break #Encerra o jogo
 
 
