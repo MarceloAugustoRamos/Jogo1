@@ -5,7 +5,7 @@ root = tk.Tk()
 root.title("Ecos do Abismo")
 root.geometry("1024x768")
 root.attributes('-fullscreen', True)
-root.bind("<Escape>", lambda e: root.attributes('-fullscreen', False))
+root.bind("<Escape>", lambda _: root.attributes('-fullscreen', False))
 
 # Variável para rastrear o tema
 is_dark_theme = False  # Iniciar com o tema claro
@@ -52,7 +52,7 @@ def show_inicio():
     title = tk.Label(root, text="Ecos do Abismo", font=("Arial", 24))
     title.pack(pady=20)
 
-    subtitle = tk.Label(root, text="Bem-vindo, O Esquecido. Escolha seu destino.", font=("Arial", 14))
+    subtitle = tk.Label(root, text="Bem-vindo, Buzeira. Escolha seu destino.", font=("Arial", 14))
     subtitle.pack(pady=10)
 
     explorar_button = tk.Button(root, text="Explorar Masmorra", command=lambda: show_screen("explorar"))
@@ -88,7 +88,7 @@ def show_explorar():
     description = tk.Label(root, text="Iniciar aventura!", font=("Arial", 14))
     description.pack(pady=10)
 
-    masmorrateste_button = tk.Button(root, text="Masmorra: Catedral Profanada", command=lambda: print("Entrando na Masmorra"))
+    masmorrateste_button = tk.Button(root, text="Masmorra: Catedral Profanada", command=start_game)
     masmorrateste_button.pack(pady=10)
 
     voltar_button = tk.Button(root, text="Voltar", command=lambda: show_screen("inicio"))
@@ -96,9 +96,34 @@ def show_explorar():
 
     apply_theme(dark_theme if is_dark_theme else light_theme)
 
-# Inicializar com a tela inicial
+# Função para iniciar o jogo
+def start_game():
+    for widget in root.winfo_children():
+        widget.destroy()
+    title = tk.Label(root, text="Iniciando Aventura", font=("Arial", 14))
+    title.pack(pady=20)
+
+    # Equipamento inicial
+    espada = 3
+    pocao = 1
+    vida = True
+    chave = 0
+
+    # Variáveis das salas na primeira parte da masmorra
+    tranca3 = True  # Tranca da porta vermelha na sala 3
+    prim3 = True  # Primeira vez na sala 3 (para pegar a chave)
+    prim4 = True  # Primeira vez na sala 4 (para pegar a poção)
+    prim6 = True  # Primeira vez na sala 6 (para pegar a chave)
+    skl5 = True  # Esqueleto na sala 5 não derrotado
+    sala7 = False  # Jogador chegou na sala 7
+
+    # Por enquanto, apenas um botão para voltar
+    voltar_button = tk.Button(root, text="Voltar", command=lambda: show_screen("explorar"))
+    voltar_button.pack(pady=10)
+
+# Inicializar a tela inicial e iniciar o loop principal
 show_inicio()
 
-# Iniciar o loop principal da interface
 root.mainloop()
+
 
