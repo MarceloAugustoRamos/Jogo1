@@ -279,6 +279,8 @@ while vida:
         else:
             #Sala 12(sem o texto para a decisão da porta por enquanto)
             print('')
+            print('1')
+            print('2')
             porta12 = int(input('> '))
             if porta12 == 1:
             #Sala 13(sem o texto para a decisão da porta por enquanto)
@@ -303,6 +305,8 @@ while vida:
                             vida = False
 
                 print('')
+                print('1')
+                print('2')
                 porta13 = int(input('> '))
                 if porta13 == 1:
                     #Armadilha 1
@@ -333,6 +337,8 @@ while vida:
         #sala 10(sem o texto para a decisão da porta por enquanto)
         if porta10 == 0:
             print('')
+            print('1')
+            print('2')
             porta10 = input('> ')
 
 
