@@ -1,8 +1,12 @@
 #início
 print('Você é preso em uma masmorra, e perdeu suas memórias')
 print('A única coisa em que pensa é: ESCAPAR')
-
+print('')
 #Equipamento inicial
+print('Você começa com uma espada com 3 de durabilidade e uma poção de retorno, que ao entrar em situções de perigo, é consumida para retornar à primeira sala')
+print('ao digitar algo que não aparece nas opções, a última será escolhida')
+print('Digite apenas números')
+print('')
 espada = 3
 pocao = 1
 vida = True
@@ -251,7 +255,7 @@ while vida:
                     print('1: Em frente(terminar o jogo).')
                     input('> ')
                     print('Parabéns, você escapou da masmorra.')
-                    vida = False
+                    break #Encerra o jogo
 
 
     if porta7 == 2:
@@ -277,21 +281,21 @@ while vida:
                 vida = False
         
         else:
-            #Sala 12(sem o texto para a decisão da porta por enquanto)
-            print('')
-            print('1')
-            print('2')
+            #Sala 12
+            print('Você vê duas portas nessa sala')
+            print('1: Uma porta de ferro')
+            print('2: Uma porta aberta, você pode ver uma luz na sala a diante')
             porta12 = int(input('> '))
             if porta12 == 1:
-            #Sala 13(sem o texto para a decisão da porta por enquanto)
+            #Sala 13
                 if cac13:
                     print('Você encontra um caçador nessa sala')
-                    print('Será necessário 3 de durabilidade da espada para derrotar')
+                    print('Será necessário 2 de durabilidade da espada para derrotar')
                     print(f'Sua espada tem {espada} de durabilidade')
                     print('1: Lutar')
                     input('> ')
-                    if espada > 2:
-                        print('Você derrota o esqueleto com sucesso')
+                    if espada > 1:
+                        print('Você derrota o caçador com sucesso')
                         espada -= 3
                         cac13= False
                     else:
@@ -304,9 +308,9 @@ while vida:
                             print('Você morreu')
                             vida = False
 
-                print('')
-                print('1')
-                print('2')
+                print('Você pode ver duas portas nessa sala')
+                print('1: Porta de ferro ensanguentada')
+                print('2: porta de ferro com espinhos')
                 porta13 = int(input('> '))
                 if porta13 == 1:
                     #Armadilha 1
@@ -334,11 +338,11 @@ while vida:
 
 
     else:
-        #sala 10(sem o texto para a decisão da porta por enquanto)
+        #sala 10
         if porta10 == 0:
-            print('')
-            print('1')
-            print('2')
+            print('Há duas portas nessa sala')
+            print('1: Esquerda')
+            print('2: Em frente')
             porta10 = input('> ')
 
 
@@ -352,9 +356,9 @@ while vida:
                 print('Você morreu.')
                 vida = False
         else:
-            #Sala 14(Saída, sem o texto completo por enquanto)
-            print('-Saída-')
-            print('1: (terminar o jogo)')
+            #Sala 14
+            print('Há apenas uma porta nessa sala, quanto mais você se aproxima, mais forte a luz emanando dela vai ficando')
+            print('1: Em frente(terminar o jogo)')
             int(input('> '))
             print('Parabéns, você escapou da masmorra.')
             break #Encerra o jogo
